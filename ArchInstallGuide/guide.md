@@ -16,7 +16,7 @@ Nothing here yet.
 
 
 
-###### This document was made with [Typora](https://typora.io/).
+###### This document was made with <a href="https://typora.io/" target="_blank">Typora</a>.
 
 
 

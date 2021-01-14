@@ -15,6 +15,7 @@ title: FirexGiant Website Navigation
 </style>
 
 
+
 # FirexGiant Website Navigation
 
 ---
@@ -25,7 +26,7 @@ title: FirexGiant Website Navigation
 
 
 
-###### This document was made with [Typora](https://typora.io/).
+###### This document was made with <a href="https://typora.io/" target="_blank">Typora</a>.
 
 
 
