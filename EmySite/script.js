@@ -1,4 +1,4 @@
-var anniversaryDate = new Date("01-14-2022").getTime();
+var anniversaryDate = new Date("2022/01/14").getTime();
 var anniversaryNumber = 6;
 
 var countdown = setInterval(() => {
