@@ -11,10 +11,11 @@ var countdown = setInterval(() => {
     var minutes = Math.floor((timeToAnniversary % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((timeToAnniversary % (1000 * 60)) / 1000);
 
-    var countdownTime = document.getElementById("countdownTime");
+    var countdownDiv = document.getElementById("countdown");
+    var countdownTime = countdownDiv.getElementsByTagName("p")[0];
     countdownTime.innerHTML = `${padNumber(days, 2)}:${padNumber(hours, 2)}:${padNumber(minutes, 2)}:${padNumber(seconds, 2)}`;
 
-    var countdownLabel = document.getElementById("countdownLabel");
+    var countdownLabel = countdownDiv.getElementsByTagName("h2")[0];
     countdownLabel.innerHTML = `Time to ${anniversaryNumber} month anniversary:`;
 }, 1000);
 
@@ -26,23 +27,6 @@ function padNumber(number, length) {
     }
 
     return output;
-}
-
-function playSorryAnimation() {
-    var div = document.getElementById("sorry");
-    var lines = div.getElementsByTagName("*");
-    var animationTime = lines.length * 5;
-
-    for (var i = 0; i < lines.length; ++i) {
-        lines[i].style.animation = "fadeIn 5s forwards";
-        lines[i].style.animationDelay = `${i * 5}s`;
-    }
-
-    setTimeout(() => {
-        for (var i = 0; i < lines.length; ++i) {
-            lines[i].style.animation = "fadeOut 3s forwards";
-        }
-    }, animationTime * 1000);
 }
 
 // if (!localStorage.getItem("visited")) {

@@ -23,56 +23,22 @@
 body, html {
     padding: 0;
     margin: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
 }
 
 body {
-    text-align: center;
-
     background-image: url("background.jpg");
-    background-size: 100% 100%;
     background-repeat: no-repeat;
-
-    color: white;
-}
-
-#sorry {
-    display: none;
-}
-
-#sorry h1 {
-    padding: 0;
-    margin: 0;
-
-    font-family: var(--kalam);
-    font-size: 10vh;
-
-    opacity: 0;
-}
-
-#sorry h2 {
-    padding: 0;
-    margin: 0;
-
-    font-family: var(--kalam);
-    font-size: 7vh;
-
-    opacity: 0;
-}
-
-#sorry h3 {
-    padding: 0;
-    margin: 0;
-
-    font-family: var(--kalam);
-    font-size: 5vh;
-
-    opacity: 0;
+    background-size: 100vw 100vh;
 }
 
 #countdown {
-    opacity: 1;
+    width: 100vw;
+    height: 100vh;
+
+    text-align: center;
+    color: white;
 }
 
 #countdown h1 {
@@ -80,7 +46,7 @@ body {
     margin: 0;
 
     font-family: var(--kalam);
-    font-size: 10vh;
+    font-size: 15vmin;
 }
 
 #countdown h2 {
@@ -88,7 +54,15 @@ body {
     margin: 0;
 
     font-family: var(--kalam);
-    font-size: 5vh;
+    font-size: 10vmin;
+}
+
+#countdown h3 {
+    padding: 0;
+    margin: 0;
+
+    font-family: var(--kalam);
+    font-size: 5vmin;
 }
 
 #countdown p {
@@ -96,5 +70,5 @@ body {
     margin: 0;
 
     font-family: var(--itim);
-    font-size: 15vh;
+    font-size: 15vmin;
 }
