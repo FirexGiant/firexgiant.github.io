@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <p>
+            1 byte = 1 clock cycle
+        </p>
+        <p>Calculate output</p>
+        <table id="output" class="table table-bordered">
+            <tr>
+                <td>CPU Clock (Hz):</td>
+                <td>
+                    <input id="clock" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>File size (bytes):</td>
+                <td>
+                    <input id="size" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Output</td>
+                <td id="result">0.0 / second</td>
+            </tr>
+        </table>
+        <button onclick="calculateOutput()">Calculate</button>
+
+        <br>
+        <br>
+
+        <p>Calculate required clock speed</p>
+        <table id="required" class="table table-bordered">
+            <tr>
+                <td>Files (per second):</td>
+                <td>
+                    <input id="files" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>File size (bytes):</td>
+                <td>
+                    <input id="size" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Required clock speed:</td>
+                <td id="result">X Hz</td>
+            </tr>
+        </table>
+        <button onclick="calculateRequiredClock()">Calculate</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        function shortenOutput(x) {
+            const suffixes = ["K", "M", "G"];
+
+            let i = 0;
+            while (Math.trunc(x / 1000) !== 0) {
+                x /= 1000;
+                i++;
+            }
+
+            return x + suffixes[i - 1];
+        }
+
+        function calculateOutput() {
+            const table = document.querySelector("#output")
+
+            const clockInput = table.querySelector("#clock");
+            const sizeInput = table.querySelector("#size");
+            const resultCell = table.querySelector("#result");
+
+            const clock = clockInput.value;
+            const size = sizeInput.value;
+
+            const timeForFile = size / clock;
+
+            const filePerSecond = 1 / timeForFile;
+
+            resultCell.innerText = filePerSecond.toFixed(2) + " / second";
+        }
+
+        function calculateRequiredClock() {
+            const table = document.querySelector("#required")
+
+            const filesInput = table.querySelector("#files");
+            const sizeInput = table.querySelector("#size");
+            const resultCell = table.querySelector("#result");
+
+            const filesPerSecond = filesInput.value;
+            const size = sizeInput.value;
+
+            const clock = filesPerSecond * size;
+
+            const output = shortenOutput(clock.toFixed(2));
+
+            resultCell.innerText = output + "Hz";
+        }
+    </script>
+</body>
+
+</html>
