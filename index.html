@@ -55,6 +55,28 @@
             </tr>
         </table>
         <button onclick="calculateRequiredClock()">Calculate</button>
+
+        <p>Calculate required split</p>
+        <table id="split" class="table table-bordered">
+            <tr>
+                <td>Input clock speed:</td>
+                <td>
+                    <input id="input" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Output clock speed:</td>
+                <td>
+                    <input id="output" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Required split:</td>
+                <td id="result">0 / 0</td>
+            </tr>
+        </table>
+        <button onclick="calculateRequiredSplit()">Calculate</button>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -105,6 +127,45 @@
             const output = shortenOutput(clock.toFixed(2));
 
             resultCell.innerText = output + "Hz";
+        }
+
+        function getGreatestCommonFactor(a, b) {
+            if (a > b) {
+                [a, b] = [b, a]
+            }
+
+            let gcf = 1;
+            for (let i = 2; i < a; i++) {
+                if (Number.isInteger(a / i) && Number.isInteger(b / i)) {
+                    gcf = i;
+                }
+            }
+
+            return gcf;
+        }
+
+        function calculateRequiredSplit() {
+            const table = document.querySelector("#split")
+
+            const inputInput = table.querySelector("#input");
+            const outputInput = table.querySelector("#output");
+            const resultCell = table.querySelector("#result");
+
+            const input = inputInput.value;
+            const output = outputInput.value;
+
+            const topPercentage = output / input;
+            const bottomPercentage = 1 - topPercentage;
+
+            let top = Math.trunc(topPercentage * 100);
+            let bottom = Math.trunc(bottomPercentage * 100);
+
+            const gcf = getGreatestCommonFactor(top, bottom);
+
+            top /= gcf;
+            bottom /= gcf;
+
+            resultCell.innerText = top + "/" + bottom;
         }
     </script>
 </body>
